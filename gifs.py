@@ -13,8 +13,9 @@ MIN_SPEED = 0.15
 
 
 while True:
+    infile = sys.argv[1]
     try:
-        oim = Image.open(sys.argv[1])
+        oim = Image.open(infile)
     except IOError:
         print "Cant load", infile
         sys.exit(1)
