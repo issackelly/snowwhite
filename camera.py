@@ -2,7 +2,6 @@ from SimpleCV import Camera
 from PIL import  Image
 import sys
 import opc, sys, time
-from utils import
 from utils import simplecv_smart_crop, layout, size
 
 client = opc.Client('localhost:7890')
