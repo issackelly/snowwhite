@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import opc, sys
 from PIL import  Image
 from utils import pil_resize_crop, layout, size

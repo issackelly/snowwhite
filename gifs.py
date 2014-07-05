@@ -2,6 +2,7 @@ from PIL import  Image
 import sys
 import opc, sys, time
 
+
 from utils import size, layout, pil_resize_crop
 
 client = opc.Client('localhost:7890')
@@ -9,7 +10,6 @@ black = [ (0,0,0) ] * size[0] * size[1]
 client.put_pixels(black)
 
 MIN_SPEED = 0.15
-
 
 
 while True:
@@ -54,4 +54,3 @@ while True:
 
     except EOFError:
         pass # end of sequence
-
