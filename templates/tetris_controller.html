@@ -1,0 +1,139 @@
+<html>
+<head>
+    <script src="/static/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/socket.io.min.js"></script>
+
+    <style>
+    html {
+        background: #222;
+    }
+    body {
+        width: 100%;
+        margin: 0 auto;
+        background: #663399;
+        color: #320346;
+    }
+    input[type=submit] {
+        border: 0;
+        background: #663399;
+        z-index: 99;
+        color: #320346;
+        position: relative;
+        width: 32%;
+        margin: 0;
+        padding: 0;
+        float: left;
+        font-size: 90px;
+    }
+    aside {
+        width: 100%;
+        height: 40%;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid #320346;
+    }
+    #left {
+        left: 0;
+        height: 100%;
+    }
+    #right {
+        right: 0;
+        height: 100%;
+        float: right;
+    }
+    #rotx {
+        height: 49%;
+        top: 0;
+    }
+    #drop {
+        height: 49%;
+        bottom: 0;
+    }
+
+    #log {
+        position: absolute;
+        top: 30px;
+        list-style-type: none;
+        font-size: 50px;
+    }
+
+    footer {
+        font-family: Helvetica, sans;
+        font-size: 33px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        border-bottom: 1px solid #320346;
+    }
+
+
+    #board {
+        width: 300;
+    }
+
+
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+
+</head>
+<body>
+    <aside>
+        <input type="submit" id="left" value="&#9664;" data-action="l" />
+        <input type="submit" id="right" value="►" data-action="r" />
+        <input type="submit" id="rotx" value="↻" data-action="x" />
+        <input type="submit" id="drop" value="&#9660;" data-action="d" />
+    </aside>
+    {#<img src="/static/board.png" id="board">#}
+    <ul id="log">
+
+    </ul>
+    <footer>
+        PyOhio Plays Tetris
+    </footer>
+
+
+    <script type="text/javascript">
+    var i = 0;
+
+    $(document).ready(function(){
+        var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
+
+        $(document).keydown(function(e){
+            switch (e.which){
+                case 37:
+                    socket.emit('action', {data: 'l'});
+                    break;
+                case 39:
+                    socket.emit('action', {data: 'r'});
+                    break;
+                case 38:
+                    socket.emit('action', {data: 'x'});
+                    break;
+                case 40:
+                    socket.emit('action', {data: 'd'});
+                    break;
+            }
+        })
+
+        socket.on('action', function(msg) {
+            actions = {
+                "r": "►",
+                "l": "&#9664;",
+                "x": "↻",
+                "d": "&#9660;",
+            }
+
+            $('#log').prepend('<li>' + actions[msg.data] + '</li>');
+            $("#log li:gt(5)").remove();
+        });
+
+        $('aside input').click(function(e) {
+            socket.emit('action', {data: $(this).attr('data-action')});
+            e.preventDefault();
+        });
+
+    });
+    </script>
+</body>
+</html>
