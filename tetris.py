@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# Open Pixel Array Tetris, Issac Kelly, 2014
+#
+# Originally based on the following:
+#
 # Tetromino (a Tetris clone)
 # By Al Sweigart al@inventwithpython.com
 # http://inventwithpython.com/pygame
@@ -169,7 +173,7 @@ def runGame():
     fallingPiece = getNewPiece()
     nextPiece = getNewPiece()
 
-    while True: # game loop
+    while r.get('stop_pattern') == 'No': # game loop
         if fallingPiece == None:
             # No falling piece in play, so start a new piece at the top
             fallingPiece = nextPiece
@@ -422,18 +426,35 @@ def drawPiece(piece, im, draw):
 def main():
     global client
 
-    client = opc.Client('localhost:7890')
     black = [ (0,0,0) ] * size[0] * size[1]
     client.put_pixels(black)
 
     # Clear the event queue
     r.delete('tetris')
 
-    while True: # game loop
+    while r.get('stop_pattern') == 'No': # game loop
         runGame()
         # gameover
         r.delete('tetris')
 
 
+from base import Pattern
+
+class Tetris(Pattern):
+
+    def run(self, **kwargs):
+        global client
+        client = self.client
+
+        # reset game
+        self.redis_client.delete('tetris')
+
+        while self.redis_client.get('stop_pattern') == 'No': # game loop
+            runGame()
+            # gameover
+            self.redis_client.delete('tetris')
+
 if __name__ == '__main__':
+    client = opc.Client('localhost:7890')
+    r.set('stop_pattern', 'No')
     main()

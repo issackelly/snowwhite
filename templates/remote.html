@@ -1,0 +1,340 @@
+<html>
+<head>
+    <script src="/static/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/socket.io.min.js"></script>
+
+    <style>
+    html {
+        background: #222;
+    }
+    body {
+        width: 100%;
+        margin: 0 auto;
+        background: #663399;
+        color: #320346;
+    }
+    input[type=submit] {
+        border: 0;
+        background: #663399;
+        z-index: 99;
+        color: #320346;
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        float: left;
+        font-size: 40px;
+        clear: both;
+    }
+    aside {
+        width: 100%;
+        height: 40%;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid #320346;
+    }
+
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+
+</head>
+<body>
+
+    <section>
+       <input type="submit" data-action="blank"     value="blank">
+       Hey PyOhio, It's good to be home.
+
+       this is me.
+
+       <input type="submit" data-action="hi"        value="hi">
+       <input type="submit" data-action="me"        value="me">
+       I wanted to share what it's like building art and electronics projects with python.
+       <br/>
+        Most of my work is for a very private social organization, It's difficult to discuss.
+       <input type="submit" data-action="latitude"  value="latitude">
+       So I made something for you.
+
+       <input type="submit" data-action="blank"     value="blank">
+
+
+It's sort of intentionally devoid of artistic vision.
+If I were applying for a grant, I'd spend another several hundred words about how
+meaningful that was.
+<br><br>
+You can make it whatever you want, it's more of a canvas for building your own piece.
+<br><br>
+So far I've made several pieces with it, ranging from the utterly silly to some
+which are personally a little more....reflective.
+<br><br>
+Anyway, without further adieu, here's snow white.
+<br>
+       <input type="submit" data-action="intro"     value="intro">
+
+       <input type="submit" data-action="blank"     value="blank">
+
+I call it an autoreflector. Cute right? At least when I'm looking, and at least while it's off.
+<br><br>
+Anyway, Let's turn it on.
+       <input type="submit" data-action="white"     value="white">
+
+Talk about impressionists
+       <input type="submit" data-action="monet"     value="monet">
+<br><br>
+talk about post impressionists. "yeah that was cool, but..."
+       <input type="submit" data-action="van_gogh"  value="van_gogh">
+<br><br>
+talk about post cubists. "yeah that was cool, but..."
+       <input type="submit" data-action="picasso"  value="picasso">
+
+Talk about pointalism
+       <input type="submit" data-action="seurat"     value="seurat">
+
+And now back to me
+       <input type="submit" data-action="blank"     value="blank">
+
+So, Lets deconstruct how it all works.
+<br><br>
+Hardware high level.<br><br>
+Software high level.<br><br>
+OpenPixel Control.<br><br>
+SimpleCV.<br><br>
+<br><br>
+As you can maybe tell now, this is what is moronically called two-way glass. Glass by nature is two-way.
+This is more like "conditionally one-way glass". The condition is that it's dark on one side. That side
+can see out, but the light side can't see in. If you've seen a cop drama, you probably get the idea.
+<br><br>
+This one isn't even glass, it's acrylic. It travels better and is less likely to cut me open.
+<br><br>
+I got this cut to fit the thrift-shop frame from my local plastics store (Thanks Jane)
+<br><br>
+Let's get the practical considerations of the medium out of the way before we dig into the software.
+<br><br>
+We have some two way glass, and an array of LEDs. That's about it for this piece.
+Affixed to one side of the glass is some vellum paper (Thanks Dad).
+This diffuses the light from the other side so you don't see pixels.
+This is so we get more of an impression than a screen.
+<br><br>
+<br><br>
+-------
+<br><br>
+So, you've got this crazy idea for a piece of hardware, or some interactive art,
+and so One might think think to Oneself:
+<br><br>
+    ooh, simple, it's just some two way glass, and some LEDs. Probably like, a weekend's
+    worth of work.
+<br><br>
+This time the one is me
+<br><br>
+[selfie] | [ bob the builder ]
+<br><br>
+Then the reality sets in.
+<br><br>
+You still have to:
+<br><br>
+Pick the format () {} [] [  ] o
+<br><br>
+ (shape gif) | other shape gif
+<br><br>
+Pick the leds ---- [ ] ...
+<br><br>
+ moar gifs
+<br><br>
+Adjust the format
+Pick the Power Supply
+<br><br>
+ [ $ ] | Tesla Coil
+<br><br>
+Pick the driver(s)
+<br><br>
+ [ Arduino Logo ] Linux Logo
+<br><br>
+Estimate the cost.
+<br><br>
+ [ $ $ $ ]
+<br><br>
+Panic. Adjust. Unpanic.
+<br><br>
+ [ $ ! %! $ ] [$%#$]
+<br><br>
+Pick the logic controller (hardware and software)
+Prototype the hardware<br><br>
+    * Design custom breakouts<br><br>
+    * Order a few from a fab ( 2 weeks )<br><br>
+    * Test Those<br><br>
+    * Order a few dozen from a fab ( 2 weeks )<br><br>
+<br><br>
+<br><br>
+    [Clock ] | [$]
+<br><br>
+Prototype the software<br><br>
+Build the mounting brackets<br><br>
+Assemble the pieces<br><br>
+Build the wiring harnesses<br><br>
+Finish the software<br><br>
+Ship it to Ohio<br><br>
+<br><br>
+    Something that suggests this is fucking heavy....
+<br><br>
+...
+Present the Project<br><br>
+Come to grips with the budget<br><br>
+<br><br>
+    [$ :) ] | [Pabst]
+<br><br>
+What I'm here to tell you is that knowing how to program, and specifically knowing Python
+makes this part, and all the little unknowns WAY more manageable.
+<br><br>
+I used python for:<br><br>
+* Designing/Cutting the Mounting Bracket<br><br>
+* Prototyping visual manipulation<br><br>
+* Computer Vision<br><br>
+* Super Silly Gif Playing<br><br>
+* Super Sillier Tetris Game<br><br>
+* Super Silliest Multi-player Tetris Server<br><br>
+* Building the layout for the open pixel control demo server<br><br>
+<br><br>
+So, for a little more deconstruction:
+<br><br>    The mounting boards are laser cut from 1/8" clear acrylic. Hindsight says
+    I should have used opaque acrylic instead of clear. It's a little more expensive,
+    but it will block out the light better.
+<br><br>
+    Instead I used spray paint (only say this if you actually got this done dumbass)
+<br><br>
+    The acrylic is all cut to fit around the edge of the mirror, and for the arrays
+    to be within 1mm of each other, and to all have their screw holes available for mounting
+<br><br>
+    There are 20 Adafruit NeoPixel Arrays.
+        Each array has 64 pixels, connected together in a line, Its embedded software thinks
+        in 1 dimension, but it's arranged in two dimensions. This provides some interesting
+        mental gymnastics to display two-d images. (visual)
+<br><br>
+    NeoPixels are Adafruit's brand name for their WS2812 line of RGB LEDs with an integrated circuit
+    inside. You can get them way cheaper directly from China (Ali Express, All Red screen/projector, or flag)
+<br><br>
+    The Adafruit NeoPixel arrays get headers soldered to the DIN side.
+<br><br>
+    Each array gets one pin on a FadeCandy board.
+        FadeCandy is a project by Micah Scott. It's a USB connected board that will drive up to 512 of
+        LEDS through 8 channels.
+        FadeCandy also has an Open Pixel server which runs on the computer, and tons of python (and go, and c and processing) example code.
+        Open Pixel Control is a protocol, server, and mock library for working with these types of systems.
+<br><br>
+    Nylon M3 screws and nuts are used to attach each array to the mounting board.
+<br><br>
+    Each board got a breakout.
+    Each breakout got a 3 position screw terminal and some solder.
+<br><br>
+    Wiring harnesses were made
+<br><br>
+    Three Fadecandy boards and a USB camera are connected to an Intel NUC running ubuntu.
+<br><br>
+    The NUC runs the fadecandy server, and several different python scripts which drive
+    different applications on the board.
+<br><br>
+    I SSH into the nuc to run different programs, or run them from the OpenGL server locally,
+    when I'm away from the device.
+<br><br>
+<br><br>
+For the most part, I focused on things you could buy from hobbiest stores, with
+good documentation and readily available.
+    Adafruit<br><br>
+    SparkFun<br><br>
+    Amazon<br><br>
+<br><br>
+The notable exceptions are the power supply, the connectors and the breakout boards.
+    Jameco<br><br>
+    Robotics Store<br><br>
+<br><br>
+Good Power supplies aren't cheap, and if they break, they can have the sort of catastrophic
+failures associated with evil villans. Be careful, don't burn your house down.
+<br><br>
+Semiconductors, and many sensors are sort of electrically fragile. They need quality
+power supplies with specific characteristics to run well. There are a variety of
+ways to get into the bounds of what most require, and they have their tradeoffs which
+are really better left to another talk, or more likely just a textbook. Typically I
+determine my power requirements, and then pick the meanwell power supply from the
+Jameco catalog which fits the bounds.
+<br><br>
+Soldering everything together is a bad idea. It's hard to prototype, hard to test,
+and it's hard to maintain, and it's fragile. Solder is not load bearing. Wires are not
+load bearing, shipping is risky. This is why I got the breakout boards and connectors.
+<br><br>
+The breakout board I had custom built was more for my own convenience than anything.
+    Designed for free with Eagle (free)
+    Built for cheap by OSHPark.
+    I'm selling them on tindie ($1.5)
+<br><br>
+Ok great! Back to Software!
+<br><br>
+The first thing I did was display some basic images on four boards, connecting
+one fade candy, four neopixel arrays, a benchtop power supply, and my laptop.
+<br><br>
+This stretched a number of areas:
+    Python Image Library manipulation
+    Python Program -> Fadecandy server -> Fadecandy Board -> Neopixel connection
+    Image mapping to board layout
+<br><br>
+Then I got gifs running on the prototype hardware:
+    PIL -> GIF Frame -> Previous Setup
+    This way I could test moving pictures and framerate
+<br><br>
+Then I got SimpleCV setup.
+    I still don't have SimpleCV running with my laptop.
+    Turn the camera image into something that I can feed to the display.
+    First step to live image manipulation.
+<br><br>
+Then I started fiddling with what I can do with OpenCV.
+    Face Detection?
+        It's not good enough (at least with my camera?) to detect faces in real time
+    Motion Detection?
+        This works
+    Image Manipulation?
+        This works.
+<br><br>
+I promised talking about networks a bit, so I built tetris.
+    Or rather, I borrowed a pygame implementation of tetris, and rewrote all the control and display methods.
+    It's now controlled from a redis queue, and displays to the mirror.
+<br><br>
+    I can connect from my phone and use it as the controller.
+<br><br>
+    In fact... we can all connect from our phones and use them as the controller.
+    A flask-socketio server (https://naith.local:5000) means we can play tetris together!
+<br><br>
+Thanks for coming!
+<br><br>
+If you want to see any of the code, it's online ____
+If you want to see the piece, I'm going to move it back to the open space.
+<br><br>
+--- Open It up ---
+What bits would you like more of an explanation on?
+
+
+       <input type="submit" data-action="mirror"    value="mirror">
+       <input type="submit" data-action="antimirror"    value="antimirror">
+       <input type="submit" data-action="tetris"    value="tetris">
+
+    </section>
+
+
+    <script type="text/javascript">
+    xxxyyy = null;
+    $(document).ready(function(){
+
+        var socket = io.connect('http://' + document.domain + ':' + location.port + '/presentation');
+
+        socket.on('action', function(msg) {
+            console.log(msg);
+        });
+
+        $('section input').click(function(e) {
+            console.log('foo', $(this).attr('data-action') )
+            socket.emit('slide', {data: $(this).attr('data-action')});
+            e.preventDefault();
+        });
+        xxxyyy = socket;
+
+    });
+    </script>
+</body>
+</html>
