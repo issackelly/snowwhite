@@ -5,7 +5,7 @@ import getpass
 
 env.hosts = [
     #'issackelly@10.0.0.28',
-    'issackelly@nuc.local',
+    'issackelly@192.168.1.100',
 ]
 
 env.use_ssh_config = True

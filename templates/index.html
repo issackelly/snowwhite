@@ -82,7 +82,7 @@
     <aside>
         <input type="submit" id="gif" value="random gif" data-action="gif" />
         <input type="submit" id="image" value="random space image" data-action="image" />
-        <input type="submit" id="mirror" value="mirror" data-action="mirror" />
+        <input type="submit" id="mirror" value="mirror" data-action="antimirror" />
         <!--<input type="submit" id="antimirror" value="antimirror" data-action="antimirror" />-->
         <input type="submit" id="tetris" value="tetris" data-action="tetris" />
         <input type="submit" id="tetris" value="blank" data-action="blank" />
@@ -109,7 +109,7 @@
             socket.emit('action', {data: $(this).attr('data-action')});
 
             if ( $(this).attr('data-action') == 'tetris' ) {
-                window.location.href = '/tetris_controller';
+                window.location.href = '/tetris';
             }
 
             e.preventDefault();
